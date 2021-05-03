@@ -19,15 +19,14 @@
 			var email = document.forms["LoginForm"]["email"].value;
 			var pass = document.forms["LoginForm"]["password"].value;
 			if (email == "" || email == null) {
-				alert("Email must be filled out");
+				alert("Email Tidak Boleh Dikosongkan");
 				return false;
 				}
 			if (pass == "" || pass == null) {
-				alert("Password must be filled out");
+				alert("Password Tidak Boleh Dikosongkan");
 				return false;
 				}
 			}
-			
 		</script>
 	</head>
 	

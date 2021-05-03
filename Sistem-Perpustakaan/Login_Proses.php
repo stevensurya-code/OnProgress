@@ -54,7 +54,7 @@ if (isset($_POST['login'])) {
                 echo "<script>
                 var r = confirm('Login anda Salah!');
                 if (r == true) {
-                    window.location.href='/Sistem Perpustakaan/Login.php';
+                    window.location.href='Login.php';
                 }
                   </script>";
               }

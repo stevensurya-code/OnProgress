@@ -9,6 +9,7 @@ try{
 	$email = $_POST['Email'];
 	$pass = $_POST['Password'];
 	$hp = $_POST['HP'];
+	$alamat = $_POST['Alamat'];
 	if($stat=="" || $stat==null){
 		echo "customer";
 		echo $id;
@@ -17,10 +18,11 @@ try{
 				Nama=?,
 				Password=?,
 				Email=?,
-				NoHP=?
+				NoHP=?,
+				Alamat=?
 			WHERE ID_Customer =?";
 		$stmtup = $pdo->prepare($sqlup);
-		$stmtup->execute([$nama,$pass,$email,$hp,$id]);
+		$stmtup->execute([$nama,$pass,$email,$hp,$alamat,$id]);
 	}else{
 		echo "staff";
 		echo $id;

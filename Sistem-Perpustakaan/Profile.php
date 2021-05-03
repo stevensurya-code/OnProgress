@@ -68,12 +68,7 @@ try{
 		}
 		
 	</style>
-	<script>
-			function Perpindahan(){
-			  //alert('this one works too!'); 
-			  window.location.href = "#edit.php";
-			}
-	</script>
+	
 </head>
 <body>
 	<div id="top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
@@ -139,6 +134,14 @@ try{
 						<td class="col-sm-3"><label><?php echo $row['NoHP']?></label></td>
 						<td class="col-sm-3"></td>
 					<tr>
+					<?php if($stat =="" || $stat =="" ): ?>
+					<tr>
+						<td class="col-sm-3"></td>
+						<td class="col-sm-3"><label>Alamat : </label></td>
+						<td class="col-sm-3"><label><?php echo $row['Alamat']?></label></td>
+						<td class="col-sm-3"></td>
+					<tr>
+					<?php endif; ?>
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3">

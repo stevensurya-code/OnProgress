@@ -7,8 +7,6 @@
 		<link rel="stylesheet" href="Assets/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
-		<!-- <script src="jquery-3.3.1.min.js"></script>
-		<script src="Bootstrap/js/bootstrap.min.js"></script> -->
 		<script>
 		function Perpindahan(){
 			  //alert('this one works too!'); 
@@ -20,11 +18,28 @@
 			var pass = document.forms["signup_form"]["password"].value;
 			var hp = document.forms["signup_form"]["hp"].value;
 			var alamat = document.forms["signup_form"]["alamat"].value;
-			if (nama == "" || nama == null || email == "" || email == null || pass == "" || pass == null || hp == "" || hp == null || alamat == "" || alamat == null) {
-				alert("Semua Kolom must be filled out");
+			
+			if (nama == "" || nama == null ){
+				alert("Nama Tidak Bolek Dikosongkan");
+				return false;
+			}
+			if (email == "" || email == null) {
+				alert("Email Tidak Bolek Dikosongkan");
 				return false;
 				}
+			if (pass == "" || pass == null) {
+				alert("Password Tidak Bolek Dikosongkan");
+				return false;
+				}
+			if (hp == "" || hp == null) {
+				alert("No Handphone Tidak Bolek Dikosongkan");
+				return false;
 			}
+			if (alamat == "" || alamat == null) {
+				alert("Alamat Tidak boleh Dikosongkan");
+				return false;
+			}
+		}
 		</script>
 	</head>
 	

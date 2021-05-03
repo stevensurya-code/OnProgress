@@ -17,7 +17,7 @@ try{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Customer</title>
+	<title>Search</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,8 +69,8 @@ try{
 	<div id="top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
 		<a id="judul" class="my-0 mr-md-auto font-weight-normal" href="">Selamat Datang <?php echo $_SESSION['nama']?> </a>
 		<nav id="topright" class="my-2 my-md-0 mr-md-3">
-		<form action="search.php" id="search" method="post">
-			<input type="text" name="cari">
+		<form action="Search.php" id="search" method="post">
+			<input type="text" name="cari" placeholder="masukkan judul Buku">
 			<button type="submit">Search</button>
 		</form>
 			<a class="nav-link" href="Profile.php">Profile</a>

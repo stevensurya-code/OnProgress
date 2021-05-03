@@ -70,8 +70,35 @@ try{
 	</style>
 	<script>
 			function Perpindahan(){
-			  //alert('this one works too!'); 
 			  window.location.href = "Profile.php";
+			}
+			function ValidasiForm() {
+			var nama = document.forms["ProfileForm"]["Nama"].value;
+			var email = document.forms["ProfileForm"]["Email"].value;
+			var pass = document.forms["ProfileForm"]["Password"].value;
+			var hp = document.forms["ProfileForm"]["HP"].value;
+			var alamat = document.forms["ProfileForm"]["Alamat"].value;
+			
+			if (nama == "" || nama == null ){
+				alert("Nama Tidak Bolek Dikosongkan");
+				return false;
+				}
+			if (email == "" || email == null) {
+				alert("Email Tidak Bolek Dikosongkan");
+				return false;
+				}
+			if (pass == "" || pass == null) {
+				alert("Password Tidak Bolek Dikosongkan");
+				return false;
+				}
+			if (hp == "" || hp == null) {
+				alert("No Handphone Tidak Bolek Dikosongkan");
+				return false;
+				}
+			if (alamat == "" || alamat == null) {
+				alert("Alamat Tidak boleh Dikosongkan");
+				return false;
+				}
 			}
 	</script>
 </head>
@@ -115,31 +142,48 @@ try{
 			</div>
 			<div class="col-sm-10" id="colom2">
 				<table>
-					<form method="POST" action="EditProfile_Proses.php">
+					<form name="ProfileForm" method="POST" action="EditProfile_Proses.php"
+						onsubmit="return ValidasiForm()" required>
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3"><label>Nama : </label></td>
 						<td class="col-sm-3"><label><input type="text" name="Nama" value="<?php echo $row['Nama']?>" autocomplete="off" size="34"></br></td>
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3"><label>Password : </label></td>
 						<td class="col-sm-3"><label><input type="password" name="Password" value="<?php echo $row['Password']?>" autocomplete="off" size="34"></br></td>
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3"><label>Email : </label></td>
-						<td class="col-sm-3"><label><input type="text" name="Email" value="<?php echo $row['Email']?>" autocomplete="off" size="34"></br></td>
+						<td class="col-sm-3"><label><input type="email" name="Email" value="<?php echo $row['Email']?>" autocomplete="off" size="34"></br></td>
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3"><label>No Handphone : </label></td>
 						<td class="col-sm-3"><label><input type="text" name="HP" value="<?php echo $row['NoHP']?>" autocomplete="off" size="34"></br></td>
 						<td class="col-sm-3"></td>
+					</tr>
+					<?php if($stat =="" || $stat =="" ): ?>
 					<tr>
+						<td class="col-sm-3"></td>
+						<td class="col-sm-3"><label>Alamat : </label></td>
+						<td class="col-sm-3"><label><input type="text" name="Alamat" value="<?php echo $row['Alamat']?>" autocomplete="off" size="34"></br></td>
+						<td class="col-sm-3"></td>
+					</tr>
+					<?php else: ?>
+					<tr>
+						<td class="col-sm-3"></td>
+						<td class="col-sm-3"></td>
+						<td class="col-sm-3"><label><input type="hidden" name="Alamat" value="a" autocomplete="off" size="34"></br></td>
+						<td class="col-sm-3"></td>
+					</tr>
+					<?php endif; ?>
+					
 					<tr>
 						<td class="col-sm-3"></td>
 						<td class="col-sm-3">

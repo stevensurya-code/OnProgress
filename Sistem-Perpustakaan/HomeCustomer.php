@@ -63,6 +63,15 @@ try{
 		  border: 1px solid black;
 		}
 	</style>
+	<script>
+		function Checking(){
+			  if (confirm("Apakah Anda Yakin Mau Meminjam Buku Ini?")) {
+				return true;
+			  } else {
+				return false;
+			  }
+		}
+	</script>
 </head>
 <body>
 	<div id="top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
@@ -119,7 +128,7 @@ try{
 							<input type="hidden" name="idc" value= "<?php echo $id_c ?>" >
 							
 							<?php if($jumlah != 0):?>
-							<input type="submit" name="submit" value="Book"></input></td>	
+							<input type="submit" name="submit" value="Book" onclick="return Checking()" required></input></td>	
 							<?php else: ?>
 							<button type="submit" name="submit" value="Book" disabled>FULL</input></td>
 							<?php endif ?>
