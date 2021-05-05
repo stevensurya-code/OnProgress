@@ -8,6 +8,7 @@ try{
 	$stat = $_POST['stat'];
 	$email = $_POST['Email'];
 	$pass = $_POST['Password'];
+	$pass = password_hash($pass,PASSWORD_DEFAULT);
 	$hp = $_POST['HP'];
 	$alamat = $_POST['Alamat'];
 	if($stat=="" || $stat==null){

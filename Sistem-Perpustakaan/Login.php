@@ -1,18 +1,13 @@
+<!DOCTYPE html>
 <html>
 	<head>
-	
 		<title>Login</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="Assets/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css.css">
-		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
-		<!-- <script src="jquery-3.3.1.min.js"></script>
-		<script src="Bootstrap/js/bootstrap.min.js"></script> -->
-		
+		<link href="Assets/style.css" rel="stylesheet">
 		<script>
 			function Perpindahan(){
-			  //alert('this one works too!'); 
 			  window.location.href = "SignUp.php";
 			}
 			function ValidasiForm() {
@@ -30,34 +25,30 @@
 		</script>
 	</head>
 	
-	<body style="background-color:Aqua;">
-	
-		<div class="container-fluid">
-		<br>
-			<center>
-			<div style="padding-top: 10px; margin: 10px;">
-			<font face="Comic Sans MS" >
-				<div style="font-size: 24px; color:black; font-size:50px;"><span>PERPUSTAKAAN </span></div>
-				</br>
-				</br>
-				<p style="color:black; font-size:30px;">LOGIN </p>
+	<body id="login">
+		<div class="container-fluid" id="login_form">
+		<center>
+				<h1>WEBSITE PERPUSTAKAAN</h1>
+				<br>
+				<br>
+				<h2>LOGIN </h2>
 				
-				<div style="outline-style: solid; width:500px;">
-					</br>
-					
+				<div id="boxing">
+					<br>
 					<form name="LoginForm" method="POST" action="Login_Proses.php" onsubmit="return ValidasiForm()" required>
-						<label style="color:black;">EMAIL : </label>
+						<label >EMAIL : </label>
 						<input type="email" name="email" placeholder="Email" autocomplete="off" size="34"></br>
-						<label style="color:black;">PASSWORD : </label>
-						<input type="password" name="password" placeholder="Password" size="30"></br></br>
-						<input type="submit" name="login" value="SIGN IN"></input>
-						<input type="button" onclick="Perpindahan()" value="SIGN UP"></input>
+						<label >PASSWORD : </label>
+						<input type="password" name="password" placeholder="Password" size="29"></br></br>
+						<input type="submit" id="but" name="login" value="SIGN IN"></input>
+						<input type="button" id="but" onclick="Perpindahan()" value="SIGN UP"></input>
 						<br>
 						<br>
-					</form>					
-			</div>
+					</form>
+				</div>			
 		</center>
-		
+		<br>
+		</div>
 	</body>
 
 </html>	

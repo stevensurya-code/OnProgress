@@ -6,6 +6,8 @@ try{
 	$nama = $_POST['nama'];
 	$email = $_POST['email'];
 	$pass = $_POST['password'];
+	//encryp password
+	$pass = password_hash($pass,PASSWORD_DEFAULT);
 	$hp = $_POST['hp'];
 	$status = "2";
 	$sql = "INSERT INTO staff (Nama,Password,Email,NoHP,Status)

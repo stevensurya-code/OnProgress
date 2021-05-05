@@ -17,54 +17,13 @@ try{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Profile</title>
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<title>Edit Buku</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
-	<style>
-		html, body {
-		  height: 100%;
-		  margin: 0;
-		}
-		img{
-			max-width: 100%;
-			height: auto;
-		}
-		.full-height {
-		  height: 100%;
-		  background: yellow;
-		}
-		#top{
-			background-color : DimGrey;
-		}
-		#topright {
-			display: flex;
-			float: right;
-			margin-right: 50px;
-			font-size: 18px;
-		}
-		#judul{
-			font-size : 22px;
-		}
-		#colom1{
-			background-color:lavender;
-		}
-		#colom2{
-			background-color:lavenderblush;
-		}
-		
-	</style>
+	<link rel="stylesheet" href="Assets/bootstrap.min.css">
+	<link href="Assets/style.css" rel="stylesheet">
 	<script>
 			function Perpindahan(){
-			  //alert('this one works too!'); 
 			  window.location.href = "HomeAdmin.php";
 			}
 			function ValidasiForm() {
@@ -72,40 +31,58 @@ try{
 			var penulis = document.forms["BukuForm"]["Penulis"].value;
 			var tahun = document.forms["BukuForm"]["Tahun"].value;
 			var sinopsis = document.forms["BukuForm"]["Sinopsis"].value;
-			var foto = document.forms["BukuForm"]["foto"].value;
-			if (judul == "" || judul == null || penulis == "" || penulis == null || tahun == "" || tahun == null || sinopsis == "" || sinopsis == null || foto == null || foto == "") {
-				alert("All Coloumn must be filled out");
-				return false;
+			var jumlah = document.forms["BukuForm"]["Jumlah"].value;
+				if (judul == "" || judul == null ){
+					alert("Judul Tidak Bolek Dikosongkan");
+					return false;
+				}
+				if (penulis == "" || penulis == null ){
+					alert("Penulis Tidak Bolek Dikosongkan");
+					return false;
+				}
+				if (tahun == "" || tahun == null ){
+					alert("Tahun Tidak Bolek Dikosongkan");
+					return false;
+				}
+				if (sinopsis == "" || sinopsis == null ){
+					alert("Sinopsis Tidak Bolek Dikosongkan");
+					return false;
+				}
+				if (jumlah == "" || jumlah == null ){
+					alert("Jumlah Tidak Bolek Dikosongkan");
+					return false;
 				}
 			}
 	</script>
 </head>
 <body>
 	<div id="top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
-		<a id="judul" class="my-0 mr-md-auto font-weight-normal" href="">Selamat Datang <?php echo $_SESSION['nama']?> </a>
+		<h1 class="my-0 mr-md-auto font-weight-bold" href="">Halo <?php echo $_SESSION['nama']?> </h1>
 		<nav id="topright" class="my-2 my-md-0 mr-md-3">
-			<a class="nav-link" href="Profile.php">Profile</a>
-			<a class="nav-link" href="Login.php">Log Out</a>
+			<button id="topbut"><a class="nav-link" href="Profile.php">Profile</a></button>
+			<button id="topbut"><a class="nav-link" href="Login.php">Log Out</a></button>
 		</nav>
 	</div>
-	<div class="container-fluid " >
+	<div id="body">
 		<div class="row" >
 			<div class="col-sm-2 " id="colom1">
-				<ul class="nav flex-column">
-					<li class="nav-item">
-					  <a class="nav-link" href="HomeAdmin.php">Home</a>
+				<ul>
+					<li>
+					  <a class="active" href="HomeAdmin.php">Home</a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="ListPeminjam.php">List Pinjaman</a>
+					<li>
+					  <a href="ListPeminjam.php">List Pinjaman</a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="Transaksi.php">Transaksi</a>
+					<li>
+					  <a href="Transaksi.php">Transaksi</a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="TambahBuku.php">Tambah Buku</a>
+					<li>
+					  <a href="TambahBuku.php">Tambah Buku</a>
 					</li>
 					<?php if($stat =="1"): ?>
-					<li class="nav-item"><a class="nav-link" href="ListStaff.php">List Staff</a></li>
+					<li>
+						<a href="ListStaff.php">List Staff</a>
+					</li>
 					<?php endif; ?>
 				</ul>
 			</div>

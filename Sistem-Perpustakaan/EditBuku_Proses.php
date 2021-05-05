@@ -9,14 +9,12 @@ try{
 	$tahun = $_POST['Tahun'];
 	$sinopsis = $_POST['Sinopsis'];
 	$jumlah = $_POST['Jumlah'];
-	echo $jumlah;
-
 	$nama = explode(".",$_FILES['foto']['name']);
 	$nama = end($nama);
 	$nama = strtolower($nama);
-	
 	echo "<pre>";
 	var_dump($nama);
+	
 	
 	if($nama == "jpg" || $nama == "jpeg" || $nama == "png"){
 		echo "bole di upload";
@@ -35,8 +33,24 @@ try{
 			WHERE ID_Buku =?";
 		$stmtup = $pdo->prepare($sqlup);
 		$stmtup->execute([$judul,$penulis,$tahun,$sinopsis,$penyimpanan,$jumlah,$id]);
+	}else if($nama =="" || $nama == null ){
+		$sqltake = "SELECT * FROM BUKU WHERE ID_Buku ";
+		$hasilfoto = $pdo->query($sqltake);
+		$row = $hasilfoto->fetch();
+		$datafoto = $row['Foto'];
 		
+		$sqlup = "UPDATE Buku SET 
+				Judul=?,
+				Penulis=?,
+				Tahun=?,
+				Sinopsis=?,
+				Foto=?,
+				Jumlah=?
+			WHERE ID_Buku =?";
+		$stmtup = $pdo->prepare($sqlup);
+		$stmtup->execute([$judul,$penulis,$tahun,$sinopsis,$datafoto,$jumlah,$id]);
 	}
+	
 }catch(PDOException $e){
 	echo "Error: ".$e->getMessage();
 }

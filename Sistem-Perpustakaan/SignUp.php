@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 	
@@ -5,11 +6,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="Assets/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css.css">
-		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+		<link href="Assets/style.css" rel="stylesheet">
 		<script>
 		function Perpindahan(){
-			  //alert('this one works too!'); 
 			  window.location.href = "Login.php";
 			}
 		function ValidasiForm() {
@@ -43,39 +42,39 @@
 		</script>
 	</head>
 	
-	<body style="background-color:Aqua;">
+	<body id="login">
 	
-		<div class="container-fluid">
-		<br>
+		<div class="container-fluid" id="sign_form">
 			<center>
-			<div style="padding-top: 10px; margin: 10px;">
 			<font face="Comic Sans MS" >
-				<div style="font-size: 24px; color:black; font-size:50px;"><span>  PERPUSTAKAAN </span></div>
+				<h1>PERPUSTAKAAN</h1>
 				</br>
 				</br>
-				<p style="color:black; font-size:30px;">SIGN UP </p>
+				<h2>SIGN UP </h2>
 				
-				<div style="outline-style: solid; width:500px;">
+				<div id="boxing">
 					</br>
 					<form name="signup_form" method="POST" action="SignUp_Proses.php" onsubmit="return ValidasiForm()" required>
-						<label style="color:black;">Nama : </label>
-						<input type="text" name="nama" placeholder="Nama" autocomplete="off" size="35"></br>
-						<label style="color:black;">EMAIL : </label>
-						<input type="email" name="email" placeholder="Email" autocomplete="off" size="34"></br>
-						<label style="color:black;">PASSWORD : </label>
+						<label >Nama : </label>
+						<input type="text" name="nama" placeholder="Nama" autocomplete="off" size="36"></br>
+						<label >EMAIL : </label>
+						<input type="email" name="email" placeholder="Email" autocomplete="off" size="35"></br>
+						<label >PASSWORD : </label>
 						<input type="password" name="password" placeholder="Password" size="30"></br>
-						<label style="color:black;">No Handphone : </label>
-						<input type="text" name="hp" placeholder="No Handphone" autocomplete="off" size="29"></br>
-						<label style="color:black;">Alamat : </label>
-						<input type="text" name="alamat" placeholder="Alamat" autocomplete="off" size="34"></br></br>
-						<input type="submit" name="signup" value="SIGN UP"></input>
-						<input type="button" onclick="Perpindahan()" value="CANCEL"></input>
+						<label >No Handphone : </label>
+						<input type="text" name="hp" placeholder="No Handphone" autocomplete="off" size="27"></br>
+						<label >Alamat : </label>
+						<input type="text" name="alamat" placeholder="Alamat" autocomplete="off" size="35"></br></br>
+						<input type="submit" id="but" name="signup" value="SIGN UP"></input>
+						<input type="button" id="but" onclick="Perpindahan()" value="CANCEL"></input>
 						<br>
 						<br>
 					</form>					
-			</div>
+				</div>
+			</font>
 		</center>
-		
+		<br>
+		</div>
 	</body>
 
 </html>	

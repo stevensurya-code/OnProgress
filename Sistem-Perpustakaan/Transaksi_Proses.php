@@ -57,5 +57,5 @@ try{
 }catch(PDOException $e){
 	echo "Error: ".$e->getMessage();
 }
-header("location:HomeAdmin.php");
+header("location:ListPeminjam.php");
 ?>

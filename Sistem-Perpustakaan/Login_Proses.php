@@ -5,11 +5,10 @@ session_start();
 if (isset($_POST['login'])) {
     try {
            $emailpost = $_POST['email'];
-           $password = $_POST['password'];
-		   
-           $sql = "SELECT * FROM customer WHERE Email= ? and Password= ?";
+           $passwordpost = $_POST['password'];
+           $sql = "SELECT * FROM customer WHERE Email= ?";
            $stmt = $pdo->prepare($sql);
-           $stmt->execute([$emailpost,$password]);
+           $stmt->execute([$emailpost]);
            $row = $stmt->fetch();
 		   if ($row != "" || $row != NULL){
 			//login user
@@ -20,13 +19,9 @@ if (isset($_POST['login'])) {
 			   $status ='';
 		   } else{
 			   //login staff
-			$sql = "SELECT * FROM staff WHERE Email= ? and Password= ?";
+			$sql = "SELECT * FROM staff WHERE Email= ?";
 			$stmt = $pdo->prepare($sql);
-			$data = [
-              $_POST['email'],
-              $_POST['password']
-			];
-			$stmt->execute($data);
+			$stmt->execute([$emailpost]);
 			$row = $stmt->fetch();
 				$id = $row['ID_Staff'];
 				$nama = $row['Nama'];
@@ -35,8 +30,8 @@ if (isset($_POST['login'])) {
 				$status = $row['Status'];
 				//status berfungsi menentukan admin atau staff
 		   }
-           
-           if ($emailpost == $email && $password == $pass) 
+			$verify = password_verify($passwordpost, $row['Password']);
+			if ($verify == 1) 
              {
               $_SESSION['id']  = $id;
               $_SESSION['nama']  = $nama;
@@ -45,12 +40,12 @@ if (isset($_POST['login'])) {
                   //user
               	header("location:HomeCustomer.php");
               } else{
+				  
                 //admin dan staff
                 header("location:HomeAdmin.php");
               }
               }	
               else {
-                
                 echo "<script>
                 var r = confirm('Login anda Salah!');
                 if (r == true) {

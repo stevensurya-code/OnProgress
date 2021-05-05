@@ -5,6 +5,8 @@ include "conn.php";
 $nama = $_POST['nama'];
 $email = $_POST['email'];
 $pass = $_POST['password'];
+//encryp password
+$pass = password_hash($pass,PASSWORD_DEFAULT);
 $hp = $_POST['hp'];
 $alamat = $_POST['alamat'];
 try{
