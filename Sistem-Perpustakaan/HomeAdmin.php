@@ -19,16 +19,32 @@ try{
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="Assets/bootstrap.min.css">
 	<link href="Assets/style.css" rel="stylesheet">
+
+	<script>
+			function searching() {
+			  var input, filter, table, tr, td, i, txtValue;
+			  input = document.getElementById("myInput");
+			  filter = input.value.toUpperCase();
+			  table = document.getElementById("myTable");
+			  tr = table.getElementsByTagName("tr");
+			  for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+				  txtValue = td.textContent || td.innerText;
+				  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				  } else {
+					tr[i].style.display = "none";
+				  }
+				}       
+			  }
+			}
+	</script>
 </head>
 <body>
 	<div id="top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
 		<h1 class="my-0 mr-md-auto font-weight-bold" href="">Selamat Datang <?php echo $_SESSION['nama']?> </h1>
 		<nav id="topright" class="my-2 my-md-0 mr-md-3">
-			<form action="###" class="nav-link" id="search" method="post">
-			<?php // ini menggunakan fungsi search yang umum?>
-			<input type="text" name="cari" placeholder="Masukkan Judul Buku">
-			<button type="submit">Search</button>
-		</form>
 			<button id="topbut"><a class="nav-link" href="Profile.php">Profile</a></button>
 			<button id="topbut"><a class="nav-link" href="Login.php">Log Out</a></button>
 		</nav>
@@ -57,7 +73,8 @@ try{
 				</ul>
 			</div>
 			<div class="col-sm-10" id="colom2">
-				<table class="table1">
+			<input type="text" class="boxsearch" id="myInput" onkeyup="searching()" placeholder="Cari Judul Buku">
+				<table class="table1" id="myTable">
 					<tr>
 						<th class="col-sm-1">No.</th>
 						<th class="col-sm-2">Judul</th>
@@ -83,7 +100,7 @@ try{
 						<td class="col-sm-2"><img src="<?= $row['Foto'] ?>" /></td>
 						<td class="col-sm-1"><?= $row['Jumlah'] ?></td>
 						<td class="col-sm-2" ><input type="hidden" name="idbuku" value="<?= $row['ID_Buku'] ?>"></input>
-							<input type="submit" class="butedit" name="edit" value="Edit"></input></td>	
+						<input type="submit" class="butedit" name="edit" value="Edit"></input></td>	
 						</form>
 					</tr>
 					<?php 

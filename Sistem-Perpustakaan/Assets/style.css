@@ -161,6 +161,12 @@ li a:hover:not(.active) {
   color: white;
 }
 
+.boxsearch1{
+  margin-top: 10px;
+  width: 300px;
+  font-size: 15px;
+}
+
 .boxsearch{
   width: 300px;
   font-size: 18px;

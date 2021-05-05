@@ -34,11 +34,11 @@ try{
 		$stmtup = $pdo->prepare($sqlup);
 		$stmtup->execute([$judul,$penulis,$tahun,$sinopsis,$penyimpanan,$jumlah,$id]);
 	}else if($nama =="" || $nama == null ){
-		$sqltake = "SELECT * FROM BUKU WHERE ID_Buku ";
-		$hasilfoto = $pdo->query($sqltake);
+		$sqltake = "SELECT * FROM BUKU WHERE ID_Buku=? ";
+		$hasilfoto = $pdo->prepare($sqltake);
+		$hasilfoto->execute([$id]);
 		$row = $hasilfoto->fetch();
 		$datafoto = $row['Foto'];
-		
 		$sqlup = "UPDATE Buku SET 
 				Judul=?,
 				Penulis=?,
@@ -49,6 +49,7 @@ try{
 			WHERE ID_Buku =?";
 		$stmtup = $pdo->prepare($sqlup);
 		$stmtup->execute([$judul,$penulis,$tahun,$sinopsis,$datafoto,$jumlah,$id]);
+		
 	}
 	
 }catch(PDOException $e){

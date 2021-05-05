@@ -17,9 +17,9 @@ try{
 	echo $idb;
 	echo $idc;
 	//tambahin status kalo book aja yg bisa diapus
-	$sqldel = "DELETE FROM status_pinjam WHERE ID_Buku=? AND ID_Customer=?";
+	$sqldel = "DELETE FROM status_pinjam WHERE ID_Buku=? AND ID_Customer=? AND Status=?";
 	$stmtdel = $pdo->prepare($sqldel);
-	$stmtdel -> execute([$idb,$idc]);
+	$stmtdel -> execute([$idb,$idc,$status]);
 	
 	$sqlup = "UPDATE buku SET 
 				Jumlah=?
