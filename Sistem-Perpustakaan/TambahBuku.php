@@ -52,9 +52,6 @@ try{
 					  <a href="ListSelesai.php">List Selesai</a>
 					</li>
 					<li>
-					  <a href="Transaksi.php">Transaksi</a>
-					</li>
-					<li>
 					  <a class="active" href="TambahBuku.php">Tambah Buku</a>
 					</li>
 					<?php if($stat =="1"): ?>

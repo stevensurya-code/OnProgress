@@ -63,9 +63,6 @@ try{
 					  <a class="active" href="ListSelesai.php">List Selesai</a>
 					</li>
 					<li>
-					  <a href="Transaksi.php">Transaksi</a>
-					</li>
-					<li>
 					  <a href="TambahBuku.php">Tambah Buku</a>
 					</li>
 					<?php if($stat =="1"): ?>

@@ -5,6 +5,16 @@ try{
 		
 	$id_s = $_SESSION['id']; 
 	$stat = $_SESSION['stat'];
+	$id_c = $_GET['idc'];
+	$id_b = $_GET['idb'];
+
+	$sql = "SELECT * FROM customer WHERE ID_Customer = $id_c";
+	$hasil = $pdo->query($sql);
+	$row = $hasil->fetch();
+
+	$sql2 = "SELECT * FROM buku WHERE ID_Buku = $id_b";
+	$hasil2 = $pdo->query($sql2);
+	$row2 = $hasil2->fetch();
 }catch(PDOException $e){
 	echo "Error: ".$e->getMessage();
 }
@@ -13,7 +23,6 @@ try{
 <html>
 <head>
 	<title>Transaksi</title>
-	<title>List peminjam</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="Assets/bootstrap.min.css">
@@ -72,9 +81,6 @@ try{
 					  <a href="ListSelesai.php">List Selesai</a>
 					</li>
 					<li>
-					  <a class="active" href="Transaksi.php">Transaksi</a>
-					</li>
-					<li>
 					  <a href="TambahBuku.php">Tambah Buku</a>
 					</li>
 					<?php if($stat =="1"): ?>
@@ -92,31 +98,34 @@ try{
 					required>
 					<tr>
 						<td class="col-sm-3"></td>
-						<td class="col-sm-3"><label style="color:black;">Email Peminjam : </label></td>
-						<td class="col-sm-3"><input type="email" name="Email" placeholder="Email Peminjam"></br></td>
+						<td class="col-sm-3"><label >Email Peminjam : </label></td>
+						<td class="col-sm-3"><input type="text" name="Email" value="<?php echo $row['Email'];?>" readonly> 
+						</input></td>
 						<td class="col-sm-3"></td>
-					<tr>
-					<tr>
-						<td class="col-sm-3"></td>
-						<td class="col-sm-3"><label style="color:black;">No HP Peminjam : </label></td>
-						<td class="col-sm-3"><input type="text" name="Hp" placeholder="No Handphone Peminjam"></br></td>
-						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3"></td>
-						<td class="col-sm-3"><label style="color:black;">Judul Buku : </label></td>
-						<td class="col-sm-3"><input type="text" name="JudulB" placeholder="Judul Buku"></br></td>
+						<td class="col-sm-3"><label >No HP Peminjam : </label></td>
+						<td class="col-sm-3"><input type="text" name="Hp" value="<?php echo $row['NoHP'];?>" readonly> 
+						</input></td>
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3"></td>
-						<td class="col-sm-3"><label style="color:black;">Jenis Transaksi : </label></td>
+						<td class="col-sm-3"><label >Judul Buku : </label></td>
+						<td class="col-sm-5"><input type="text" name="JudulB" value="<?php echo $row2['Judul'];?>" readonly>
+						</input></td>
+						<td class="col-sm-1"></td>
+					</tr>
+					<tr>
+						<td class="col-sm-3"></td>
+						<td class="col-sm-3"><label >Jenis Transaksi : </label></td>
 						<td class="col-sm-3"><select id="status" name="Transac">
 											<option value="Pengambilan">Pengambilan</option>
 											<option value="Pengembalian">Pengembalian</option>
 											</select></br></td>
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					<tr>
 						<td class="col-sm-3">
 							<input type="hidden" name="ids" value= "<?php echo $id_s ?>" >
@@ -129,7 +138,7 @@ try{
 						<td class="col-sm-3" ><input type="button" onclick="Perpindahan()" value="Cancel" class="butcancel"></input></td>	
 					
 						<td class="col-sm-3"></td>
-					<tr>
+					</tr>
 					</form>
 				</table>
 </body>

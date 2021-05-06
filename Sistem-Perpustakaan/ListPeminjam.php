@@ -62,9 +62,6 @@ try{
 					  <a href="ListSelesai.php">List Selesai</a>
 					</li>
 					<li>
-					  <a href="Transaksi.php">Transaksi</a>
-					</li>
-					<li>
 					  <a href="TambahBuku.php">Tambah Buku</a>
 					</li>
 					<?php if($stat =="1"): ?>
@@ -109,7 +106,7 @@ try{
 					?>
 					<tr>
 						<td class="col-sm-1"><?= $i ?></td>
-						<td class="col-sm-2"><?= $row2['Nama'] ?></td>
+						<td class="col-sm-2"><a href="Transaksi.php?idc=<?= $id_c ?>&idb= <?= $id_b ?>"><?= $row2['Nama'] ?></a></td>
 						<td class="col-sm-2"><?= $row1['Judul'] ?></td>
 						<td class="col-sm-2"><img src="<?= $row1['Foto'] ?>" /></td>
 						<td class="col-sm-1"><?= $row['Status'] ?></td>

@@ -5,9 +5,15 @@ try{
 	
 	$email = $_POST['Email'];
 	$hp = $_POST['Hp'];
+	$judul = $_POST['JudulB'];
 	$idc="";
 	$idb="";
 	
+	echo $email;
+	echo "<pre>";
+	echo $hp;
+	echo "<pre>";
+	echo $judul;
 	$sqlcus = "SELECT * FROM customer WHERE Email=? AND NoHP = ?";
 	$stmt1 = $pdo -> prepare($sqlcus);
 	$stmt1->execute([$email,$hp]);
@@ -73,7 +79,7 @@ try{
 			WHERE ID_Buku =?";
 		$stmtup = $pdo->prepare($sqlup);
 		$stmtup->execute([$jumlah,$idb]);
-		}	
+		}
 }catch(PDOException $e){
 	echo "Error: ".$e->getMessage();
 }
