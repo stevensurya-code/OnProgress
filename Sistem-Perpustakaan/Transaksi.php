@@ -69,6 +69,9 @@ try{
 					  <a href="ListPeminjam.php">List Pinjaman</a>
 					</li>
 					<li>
+					  <a href="ListSelesai.php">List Selesai</a>
+					</li>
+					<li>
 					  <a class="active" href="Transaksi.php">Transaksi</a>
 					</li>
 					<li>

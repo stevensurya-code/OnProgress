@@ -81,6 +81,9 @@ try{
 					<li >
 					  <a href="ListPeminjam.php">List Pinjaman</a>
 					</li>
+					<li>
+					  <a href="ListSelesai.php">List Selesai</a>
+					</li>
 					<li >
 					  <a href="Transaksi.php">Transaksi</a>
 					</li>
@@ -93,6 +96,9 @@ try{
 					</li>
 					<li >
 					  <a href="StatusPinjaman.php">Status Pinjaman</a>
+					</li>	
+					<li>
+					  <a href="SelesaiPinjam.php">Selesai Dipinjam</a>
 					</li>	
 					<?php endif; ?>
 					<?php if($stat =="1"): ?>

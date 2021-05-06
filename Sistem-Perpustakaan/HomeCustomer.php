@@ -63,7 +63,10 @@ try{
 					</li>
 					<li>
 					  <a href="StatusPinjaman.php">Status Pinjaman</a>
-					</li>					
+					</li>
+					<li>
+					  <a href="SelesaiPinjam.php">Selesai Dipinjam</a>
+					</li>						
 				</ul>
 			</div>
 			<div class="col-sm-10" id="colom2" >
@@ -81,8 +84,11 @@ try{
 					<?php 
 						$i=0;
 						while ($row = $hasil->fetch()):
+						$i++;	
 						$jumlah = $row['Jumlah'];
-						$i++;
+						$sqldouble = "SELECT * FROM status_pinjam WHERE ID_Buku=$i AND ID_Customer=$id_c";
+						$stmtdouble = $pdo->query($sqldouble);
+						$rowdouble = $stmtdouble->fetch();
 					?>
 					<tr>
 						<td class="col-sm-1"><?= $i ?></td>
@@ -92,13 +98,19 @@ try{
 						<td class="col-sm-2"><?= $row['Sinopsis'] ?></td>
 						<td class="col-sm-2"><img src="<?= $row['Foto'] ?>" /></td>
 						<td class="col-sm-2" >
+						<?php 
+							
+						?>
 						<form method="POST" action="Book.php">
 							<input type="hidden" name="idb" value= "<?php echo $row['ID_Buku'] ?>" >
 							<input type="hidden" name="idc" value= "<?php echo $id_c ?>" >
-							<?php if($jumlah != 0):?>
-							<input type="submit" name="submit" value="Book" class="butbook" onclick="return Checking()" required></input></td>	
+							<?php if($rowdouble != "" || $rowdouble != null ):?>
+							<input type="submit" name="submit" value="Already" class="butedit" disabled></input></td>
+							<?php elseif($jumlah != 0): ?>
+							<input type="submit" name="submit" value="Book" class="butbook" onclick="return Checking()" required>
+							</input></td>	
 							<?php else: ?>
-							<button type="submit" name="submit" value="Book" class="butcancel" disabled>FULL</input></td>
+							<button type="submit" name="submit" class="butcancel" disabled>FULL</input></td>
 							<?php endif ?>
 						</form>
 					</tr>

@@ -59,6 +59,9 @@ try{
 					  <a class="active" href="ListPeminjam.php">List Pinjaman</a>
 					</li>
 					<li>
+					  <a href="ListSelesai.php">List Selesai</a>
+					</li>
+					<li>
 					  <a href="Transaksi.php">Transaksi</a>
 					</li>
 					<li>
@@ -84,7 +87,6 @@ try{
 						<th class="col-sm-1">Status</th>
 						<th class="col-sm-2">Nama Staff</th>
 						<th class="col-sm-1">Tanggal Pengambilan</th>
-						<th class="col-sm-1">Tanggal Pengembalian</th>
 				
 					</tr>
 					<?php 
@@ -94,7 +96,6 @@ try{
 							$id_c = $row['ID_Customer'];
 							$id_s = $row['ID_Staff'];
 							$tgla = $row['Tanggal_Pengambilan'];
-							$tglk = $row['Tanggal_Pengembalian'];
 							$sqlbuk = "SELECT * FROM buku WHERE ID_Buku = ?";
 							$stmt1 = $pdo->prepare($sqlbuk);
 							$stmt1->execute([$id_b]);
@@ -133,16 +134,6 @@ try{
 								}
 							?>
 						</td>
-						<td class="col-sm-1">
-							<?php 
-							if($tglk == null || $tglk == "" || $tglk == "0000-00-00"){
-								echo "-";
-								} else{
-									echo $tglk;
-								}
-							?>
-						</td>
-						
 					</tr>
 					<?php 
 						endwhile;

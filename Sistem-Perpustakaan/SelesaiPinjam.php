@@ -4,7 +4,7 @@ try{
 	include "conn.php";
 	$id_c = $_SESSION['id']; 
 	
-	$sql = "SELECT * FROM status_pinjam WHERE ID_Customer = $id_c";
+	$sql = "SELECT * FROM selesai_pinjam WHERE ID_Cus = $id_c";
 	$hasil = $pdo->query($sql);
 	
 }catch(PDOException $e){
@@ -15,20 +15,11 @@ try{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Status Pinjaman</title>
+	<title>Selesai Pinjam</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="Assets/bootstrap.min.css">
 	<link href="Assets/style.css" rel="stylesheet">
-	<script>
-			function Checking(){
-			  if (confirm("Apakah Anda Tidak Jadi Meminjam Buku Ini?")) {
-				return true;
-			  } else {
-				return false;
-			  }
-			}
-	</script>
 </head>
 
 <body>
@@ -47,10 +38,10 @@ try{
 					  <a href="HomeCustomer.php">Home</a>
 					</li>
 					<li>
-					  <a class="active" href="StatusPinjaman.php">Status Pinjaman</a>
+					  <a href="StatusPinjaman.php">Status Pinjaman</a>
 					</li>
 					<li>
-					  <a href="SelesaiPinjam.php">Selesai Dipinjam</a>
+					  <a class="active" href="SelesaiPinjam.php">Selesai Dipinjam</a>
 					</li>	
 				</ul>
 			</div>
@@ -60,18 +51,18 @@ try{
 						<th class="col-sm-1">No.</th>
 						<th class="col-sm-2">Judul Buku</th>
 						<th class="col-sm-2">Foto</th>
-						<th class="col-sm-1">Status</th>
 						<th class="col-sm-2">Nama Staff</th>
-						<th class="col-sm-1">Tanggal Pengambilan</th>
-						<th class="col-sm-2">Action</th>
+						<th class="col-sm-2">Tanggal Pengambilan</th>
+						<th class="col-sm-2">Tanggal Pengembalian</th>
+						<th class="col-sm-1">Status</th>
 					</tr>
 					<?php 
 						$i=0;
 						while ($row = $hasil->fetch()):
-							$id_b = $row['ID_Buku'];
-							$id_s = $row['ID_Staff'];
-							$tgla = $row['Tanggal_Pengambilan'];
-							$status = $row['Status'];
+							$id_b = $row['ID_B'];
+							$id_s = $row['ID_S'];
+							$tgla = $row['Tgl_Ambil'];
+							$tglk = $row['Tanggal_Pengembalian'];
 							
 							$sqlbuk = "SELECT * FROM buku WHERE ID_Buku = ?";
 							$stmt1 = $pdo->prepare($sqlbuk);
@@ -83,7 +74,6 @@ try{
 						<td class="col-sm-1"><?= $i ?></td>
 						<td class="col-sm-2"><?= $row1['Judul'] ?></td>
 						<td class="col-sm-2"><img src="<?= $row1['Foto'] ?>" /></td>
-						<td class="col-sm-1"><?= $row['Status'] ?></td>
 						<td class="col-sm-2">
 							<?php if($id_s == null || $id_s == "" || $id_s == "0"){
 								echo "-";
@@ -97,7 +87,7 @@ try{
 								}
 							?>
 						</td>
-						<td class="col-sm-1">
+						<td class="col-sm-2">
 							<?php 
 							if($tgla == null || $tgla == "" || $tgla == "0000-00-00"){
 								echo "-";
@@ -106,20 +96,16 @@ try{
 								}
 							?>
 						</td>
-						<td class="col-sm-2" >
-						<form method="POST" action="UnBook.php">
-							<input type="hidden" name="idb" value= "<?php echo $row['ID_Buku'] ?>">
-							<input type="hidden" name="idc" value= "<?php echo $id_c ?>">
-							
-							<?php if($status == "Booked"):?>
-							<input type="submit" name="submit" class="butbook" value="UnBook" onclick="return Checking()" required></input>	
-							<?php elseif($status == "Taken"): ?>
-							<button type="submit" name="submit" class="butedit" disabled>Must Return</button>
-							<?php else: ?>
-							<button type="submit" name="submit" class="butcancel" disabled>Done</button>
-							<?php endif ?>
-							
-						</form>
+						<td class="col-sm-2">
+							<?php 
+							if($tglk == null || $tglk == "" || $tglk == "0000-00-00"){
+								echo "-";
+								} else{
+									echo $tglk;
+								}
+							?>
+						</td>
+						<td class="col-sm-1">DONE</td>
 						</td>
 					</tr>
 					<?php 
